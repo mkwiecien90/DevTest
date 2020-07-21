@@ -5,16 +5,23 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { JobComponent } from './job/job.component';
+
 import { HomeComponent } from './home/home.component';
+
+import { JobComponent } from './job/job.component';
 import { JobDetailComponent } from './job-detail/job-detail.component';
+
+import { CustomerComponent } from './customer/customer/customer.component';
+import { CustomerDetailComponent } from './customer/customer-detail/customer-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    JobComponent,
     HomeComponent,
-    JobDetailComponent
+    JobComponent,
+    JobDetailComponent,
+    CustomerComponent,
+    CustomerDetailComponent
   ],
   imports: [
     FormsModule,

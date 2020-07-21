@@ -21,6 +21,12 @@ namespace DeveloperTest.Business
             {
                 JobId = x.JobId,
                 Engineer = x.Engineer,
+                Customer = context.Customers.Where(c => c.CustomerId == x.CustomerId).Select(x => new CustomerModel
+                {
+                    CustomerId = x.CustomerId,
+                    Name = x.Name,
+                    Type = x.Type
+                }).SingleOrDefault(),
                 When = x.When
             }).ToArray();
         }
@@ -31,6 +37,12 @@ namespace DeveloperTest.Business
             {
                 JobId = x.JobId,
                 Engineer = x.Engineer,
+                Customer = context.Customers.Where(c => c.CustomerId == x.CustomerId).Select(x => new CustomerModel
+                {
+                    CustomerId = x.CustomerId,
+                    Name = x.Name,
+                    Type = x.Type
+                }).SingleOrDefault(),
                 When = x.When
             }).SingleOrDefault();
         }
@@ -40,6 +52,7 @@ namespace DeveloperTest.Business
             var addedJob = context.Jobs.Add(new Job
             {
                 Engineer = model.Engineer,
+                CustomerId = model.Customer.CustomerId,
                 When = model.When
             });
 
@@ -49,6 +62,12 @@ namespace DeveloperTest.Business
             {
                 JobId = addedJob.Entity.JobId,
                 Engineer = addedJob.Entity.Engineer,
+                Customer = context.Customers.Where(c => c.CustomerId == addedJob.Entity.CustomerId).Select(x => new CustomerModel
+                {
+                    CustomerId = x.CustomerId,
+                    Name = x.Name,
+                    Type = x.Type
+                }).SingleOrDefault(),
                 When = addedJob.Entity.When
             };
         }
